@@ -11,8 +11,8 @@ A database that stores list of stylists and their clients for a hair salon.
 
 * CREATE DATABASE swati_sahay;
 * USE swati_sahay_salon;
-* CREATE TABLE stylists (id serial PRIMARY KEY, stylist_name , Stylist_details, VARCHAR(255));
-* CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR(255), stylist_id VARCHAR(255));
+* CREATE TABLE stylists (id serial PRIMARY KEY, stylist_name VARCHAR(255) , Stylist_details, VARCHAR(255));
+* CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR(255), stylist_id INT);
 
 ## Spec
 
