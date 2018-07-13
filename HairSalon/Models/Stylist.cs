@@ -114,34 +114,66 @@ namespace HairSalon.Models
       }
     }
     public static Stylist Find(int id)
-   {
-     MySqlConnection conn = DB.Connection();
-     conn.Open();
-     var cmd = conn.CreateCommand() as MySqlCommand;
-       cmd.CommandText = @"SELECT * FROM stylists WHERE id = @thisId;";
-     MySqlParameter thisId = new MySqlParameter();
-       thisId.ParameterName = "@thisId";
-       thisId.Value = id;
-       cmd.Parameters.Add(thisId);
-       var rdr = cmd.ExecuteReader() as MySqlDataReader;
-       int stylistId = 0;
-       string stylistName = "";
-       string stylistDetail = "";
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM stylists WHERE id = @thisId;";
+      MySqlParameter thisId = new MySqlParameter();
+      thisId.ParameterName = "@thisId";
+      thisId.Value = id;
+      cmd.Parameters.Add(thisId);
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
+      int stylistId = 0;
+      string stylistName = "";
+      string stylistDetail = "";
 
-       while (rdr.Read())
-       {
-         stylistId = rdr.GetInt32(0);
-         stylistName = rdr.GetString(1);
-         stylistDetail = rdr.GetString(2);
-       }
-       Stylist foundStylist = new Stylist(stylistName, stylistDetail, stylistId);
+      while (rdr.Read())
+      {
+        stylistId = rdr.GetInt32(0);
+        stylistName = rdr.GetString(1);
+        stylistDetail = rdr.GetString(2);
+      }
+      Stylist foundStylist = new Stylist(stylistName, stylistDetail, stylistId);
 
-     conn.Close();
-     if (conn != null)
-     {
-       conn.Dispose();
-     }
-     return foundStylist;
-  }
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+      return foundStylist;
+    }
+    public  List<Client> GetClients()
+    {
+      List<Client> allClientDetails = new List<Client> {};
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM clients WHERE stylist_id = @stylistId;";
+
+      MySqlParameter stylistId = new MySqlParameter();
+      stylistId.ParameterName = "@stylistId";
+      stylistId.Value = this._id;
+      cmd.Parameters.Add(stylistId);
+
+
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
+      while(rdr.Read())
+      {
+        int clientId = rdr.GetInt32(0);
+        string clientName = rdr.GetString(1);
+        int ClientStylistId = rdr.GetInt32(2);
+
+      Client newClient = new Client(clientName, ClientStylistId, clientId);
+        allClientDetails.Add(newClient);
+      }
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+      return allClientDetails;
+
+    }
   }
 }
