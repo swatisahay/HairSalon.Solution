@@ -36,6 +36,21 @@ namespace HairSalon.Models
     {
       return _id;
     }
+    public override bool Equals(System.Object otherClient)
+    {
+      if (!(otherClient is Client))
+      {
+        return false;
+      }
+      else
+      {
+        Client newClient = (Client) otherClient;
+        bool idEquality = (this.GetId() == newClient.GetId());
+        bool nameEquality = (this.GetName() == newClient.GetName());
+        bool stylistIdEquality = (this.GetStylistId() == newClient.GetStylistId());
+        return (idEquality && nameEquality && stylistIdEquality);
+      }
+    }
     public static List<Client> GetAll()
     {
       // return _instances;
@@ -49,7 +64,7 @@ namespace HairSalon.Models
       {
         int clientId = rdr.GetInt32(0);
         string clientName = rdr.GetString(1);
-        int ClientStylistId = rdr.GetInt32(4);
+        int ClientStylistId = rdr.GetInt32(2);
 
         Client newClient = new Client(clientName, ClientStylistId, clientId);
         allClient.Add(newClient);
@@ -70,6 +85,27 @@ namespace HairSalon.Models
       cmd.CommandText = @"DELETE FROM clients;";
 
       cmd.ExecuteNonQuery();
+
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+    public void Save()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO clients (client_name, stylist_id) VALUES (@clientName, @stylistId);";
+
+      cmd.Parameters.Add(new MySqlParameter("@clientName", _clientName));
+      cmd.Parameters.Add(new MySqlParameter(" @stylistId", _stylistId));
+
+
+      cmd.ExecuteNonQuery();
+      _id = (int) cmd.LastInsertedId;    // This line is new!
 
       conn.Close();
       if (conn != null)
