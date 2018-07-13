@@ -27,7 +27,7 @@ namespace HairSalon.Tests
       Assert.AreEqual(0, result);
     }
     [TestMethod]
-    public void Save_SavesToDatabase_ItemList()
+    public void Save_SavesToDatabase_ClientList()
     {
       //Arrange
       Client testClient = new Client("swati", 1);
@@ -57,5 +57,18 @@ namespace HairSalon.Tests
       Assert.AreEqual(testId, result);
 
     }
+    [TestMethod]
+   public void Find_FindsClientbyIdInDatabase_Item()
+   {
+     //Arranges
+     Client testClient = new Client("tom", 1);
+     testClient.Save();
+
+     //Act
+     Client foundItem = Client.Find(testClient.GetId());
+
+     //Assert
+     Assert.AreEqual(testClient, foundItem);
+   }
   }
 }
