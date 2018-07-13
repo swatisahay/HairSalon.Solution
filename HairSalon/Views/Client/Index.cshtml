@@ -1,0 +1,18 @@
+<h1>Client List</h1>
+<a href='/client/new'>Add a New client<a/>
+<a href='/'>Back to Home<a/>
+<a href='/client/find'>Find by Id<a/>
+<table>
+  <tr>
+    <th>Client Name</th>
+    <th>Stylist Id</th>
+  </tr>
+  @foreach(var client in Model)
+  {
+  <tr>
+    <td>@client.GetName()</td>
+    <td>@client.GetStylistId()</td>
+
+  </tr>
+  }
+</table>

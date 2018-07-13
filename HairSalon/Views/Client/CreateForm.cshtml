@@ -1,0 +1,20 @@
+@using HairSalon.Models;
+
+<h1>Enter a new client</h1>
+<a href='/'>Back to Home<a/>
+<a href='/client/new'>Add a New client<a/>
+
+
+<h3>Add a new card:</h3>
+<form action="/client" method="post">
+  <label for="newname">Enter your name:</label>
+  <input id="newname" name="newname" type="text">
+  <label for="stylistid">Choose stylist:</label>
+  <select id="stylistid" name="stylistid">
+    @foreach(var stylist in Stylist.GetAll())
+    {
+      <option value="@stylist.GetId()">@stylist.GetName()</option>
+    }
+  </select>
+  <button type="submit">Submit</button>
+</form>
