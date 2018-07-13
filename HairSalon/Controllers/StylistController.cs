@@ -12,14 +12,14 @@ namespace HairSalon.Controllers
     [HttpGet("/stylist")]
     public ActionResult Index()
     {
-        List<Stylist> allStylist = Stylist.GetAll();
-        return View(allStylist);
+      List<Stylist> allStylist = Stylist.GetAll();
+      return View(allStylist);
     }
 
     [HttpGet("/stylist/new")]
     public ActionResult CreateStylistForm()
     {
-        return View();
+      return View();
     }
     [HttpPost("/stylist")]
     public ActionResult Create()
@@ -28,34 +28,34 @@ namespace HairSalon.Controllers
       // Item newItem = new Item ("Charizard", "Fire", 6);
       newStylist.Save();
       List<Stylist> allStylist = Stylist.GetAll();
-      return View("Index", allStylist);
+      return RedirectToAction("Index");
     }
-    // [HttpGet("/items/find")]
-    // public ActionResult Find()
-    // {
-    //   return View();
-    // }
-    // [HttpPost("/items/found")]
-    // public ActionResult Found()
-    // {
-    //   Item newItem = new Item("","",0, 0);
-    //
-    //   newItem = Item.Find(int.Parse(Request.Form["newid"]));
-    //
-    //   return View(newItem);
-    // }
-    // [HttpGet("/items/{id}/update")]
-    //    public ActionResult UpdateForm(int id)
-    //    {
-    //        Item thisItem = Item.Find(id);
-    //        return View(thisItem);
-    //    }
-       [HttpGet("/stylist/{id}/clients")]
-        public ActionResult Clientdetail(int id)
-        {
-            Stylist thisStylist = Stylist.Find(id);
-            List<Client> allClients = thisStylist.GetClients();
-            return View(thisStylist);
-        }
-}
-}
+    [HttpGet("/stylist/find")]
+    public ActionResult Find()
+    {
+      return View();
+    }
+    [HttpPost("/stylist/found")]
+    public ActionResult Found()
+    {
+      Stylist newStylist = new Stylist("","");
+
+      newStylist = Stylist.Find(int.Parse(Request.Form["newid"]));
+
+      return View(newStylist);
+     }
+      // [HttpGet("/items/{id}/update")]
+      //    public ActionResult UpdateForm(int id)
+      //    {
+      //        Item thisItem = Item.Find(id);
+      //        return View(thisItem);
+      //    }
+      [HttpGet("/stylist/{id}/clients")]
+      public ActionResult Clientdetail(int id)
+      {
+        Stylist thisStylist = Stylist.Find(id);
+        List<Client> allClients = thisStylist.GetClients();
+        return View(thisStylist);
+      }
+    }
+  }

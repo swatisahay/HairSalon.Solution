@@ -1,0 +1,28 @@
+<h1>Stylist</h1>
+<a href='/stylist/new'>Add a new stylist<a/>
+  <br>
+<a href='/'>Back to Home<a/>
+  <br>
+<a href='/stylist/find'>Find stylist by Id<a/>
+
+<h2>Stylists Details</h2>
+<table>
+  <tr>
+    <th>Stylist Name</th>
+
+    <th>Stylist Level</th>
+
+    <th>Clients</th>
+
+  </tr>
+
+  <tr>
+    <td>@Model.GetName()</td>
+
+    <td>@Model.GetStylistDetail()</td>
+
+    <td> <a href="/stylist/@Model.GetId()/clients">Client details</a> </td>
+
+  </tr>
+
+</table>
