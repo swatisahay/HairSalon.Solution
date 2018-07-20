@@ -27,25 +27,36 @@ namespace HairSalon.Controllers
       // Item newItem = new Item ("Charizard", "Fire", 6);
       newClient.Save();
       List<Client> allClients = Client.GetAll();
-      return View("Index",allClients);
+      return RedirectToAction("Index");
     }
 
-       //  [HttpGet("/items/{id}/delete")]
-       // public ActionResult Delete(int id)
-       // {
-       //     Item thisItem = Item.Find(id);
-       //     thisItem.Delete();
-       //     return RedirectToAction("Index");
-       // }
+    [HttpGet("/client/{id}/update")]
+  public ActionResult UpdateForm(int id)
+  {
+    Client thisClient = Client.Find(id);
+    return View(thisClient);
+  }
+  [HttpPost("/client/{id}/update")]
+  public ActionResult Update(int id)
+  {
+    Client thisClient = Client.Find(id);
+    thisClient.Edit(Request.Form["updatename"], int.Parse(Request.Form["updatestylistid"]));
+    return RedirectToAction("Index");
+  }
 
+  [HttpGet("/client/{id}/delete")]
+  public ActionResult Delete(int id)
+  {
+    Client thisClient = Client.Find(id);
+    thisClient.Delete();
+    return RedirectToAction("Index");
+  }
+  [HttpPost("/client/delete")]
+   public ActionResult DeleteAll()
+   {
+    Client.DeleteAll();
+     return View();
+   }
 
-
-    // [HttpPost("/items/delete")]
-    // public ActionResult DeleteAll()
-    // {
-    //     Item.ClearAll();
-    //     return View();
-    // }
-    
   }
 }

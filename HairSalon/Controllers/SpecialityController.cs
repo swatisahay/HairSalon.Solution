@@ -55,7 +55,7 @@ namespace HairSalon.Controllers
     //   return View();
     // }
     [HttpGet("/specialitys/{id}")]
-    public ActionResult Details(int id)
+    public ActionResult Detail(int id)
     {
       Dictionary<string, object> model = new Dictionary<string, object>();
       Speciality selectedSpeciality = Speciality.Find(id);

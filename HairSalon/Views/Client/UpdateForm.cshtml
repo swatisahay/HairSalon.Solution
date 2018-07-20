@@ -1,0 +1,22 @@
+@using HairSalon.Models;
+<h1>The Star Hair Salon</h1>
+
+<h2> Update client</h2>
+<a href='/'>Back to Home<a/>
+<a href='/client/new'>Add a New client<a/>
+<a href='/client'>List of client<a/>
+
+
+<h3>Add a update card:</h3>
+<form action="/client/@Model.GetId()/update" method="post">
+  <label for="updatename">Enter your name:</label>
+  <input id="updatename" name="updatename" type="text" value = @Model.GetName()>
+  <label for="updatestylistid">Choose stylist:</label>
+  <select id="updatestylistid" name="updatestylistid" value= @Model.GetStylistId()>
+    @foreach(var stylist in Stylist.GetAll())
+    {
+      <option value="@stylist.GetId()">@stylist.GetStylistName()</option>
+    }
+  </select>
+  <button type="submit">Submit</button>
+</form>

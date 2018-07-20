@@ -16,11 +16,11 @@ namespace HairSalon.Models
       _id = Id;
 
     }
-    public string GetName()
+    public string GetStylistName()
     {
       return _stylistName;
     }
-    public void SetName(string Name)
+    public void SetStylistName(string Name)
     {
       _stylistName = Name;
     }
@@ -46,7 +46,7 @@ namespace HairSalon.Models
       {
         Stylist newStylist = (Stylist) otherStylist;
         bool idEquality = (this.GetId() == newStylist.GetId());
-        bool nameEquality = (this.GetName() == newStylist.GetName());
+        bool nameEquality = (this.GetStylistName() == newStylist.GetStylistName());
         bool stylistDetailEquality = (this.GetStylistDetail() == newStylist.GetStylistDetail());
         return (idEquality && nameEquality && stylistDetailEquality);
       }

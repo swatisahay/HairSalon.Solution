@@ -14,5 +14,11 @@ namespace HairSalon.Controllers
         {
             return View();
         }
+        [HttpGet("/employer")]
+        public ActionResult Employer()
+        {
+          return View();
+          // return new EmptyResult();
+        }
     }
 }
