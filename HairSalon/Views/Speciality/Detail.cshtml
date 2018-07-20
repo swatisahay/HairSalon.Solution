@@ -32,7 +32,7 @@
   </ul>
 }
 <h4>Add a stylist for this stylist</h4>
-<form action='/stylist/@Model["selectedStylist"].GetId()/stylists/new' method='post'>
+<form action='/stylist/@Model["selectedSpeciality"].GetSpecialityId()/stylists/new' method='post'>
   <label for='stylistid'>Select a stylist</label>
   <select id='stylistid' name='stylistid' type='text'>
     @foreach (var stylist in @Model["allStylists"])

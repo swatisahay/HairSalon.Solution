@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 13, 2018 at 11:40 PM
+-- Generation Time: Jul 20, 2018 at 11:43 PM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.2.1
 
@@ -39,6 +39,18 @@ CREATE TABLE `clients` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `specialities`
+--
+
+CREATE TABLE `specialities` (
+  `id` int(11) NOT NULL,
+  `speciality` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- Error reading data for table swati_sahay_test.specialities: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM `swati_sahay_test`.`specialities`' at line 1
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `stylists`
 --
 
@@ -46,6 +58,18 @@ CREATE TABLE `stylists` (
   `id` int(11) NOT NULL,
   `stylist_name` varchar(255) NOT NULL,
   `stylist_detail` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stylist_speciality`
+--
+
+CREATE TABLE `stylist_speciality` (
+  `id` int(11) NOT NULL,
+  `stylist_id` int(11) NOT NULL,
+  `speciality_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -59,9 +83,21 @@ ALTER TABLE `clients`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `specialities`
+--
+ALTER TABLE `specialities`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `stylists`
 --
 ALTER TABLE `stylists`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `stylist_speciality`
+--
+ALTER TABLE `stylist_speciality`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -72,12 +108,22 @@ ALTER TABLE `stylists`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+--
+-- AUTO_INCREMENT for table `specialities`
+--
+ALTER TABLE `specialities`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 --
 -- AUTO_INCREMENT for table `stylists`
 --
 ALTER TABLE `stylists`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+--
+-- AUTO_INCREMENT for table `stylist_speciality`
+--
+ALTER TABLE `stylist_speciality`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
