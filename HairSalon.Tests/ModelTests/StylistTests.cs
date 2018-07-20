@@ -12,6 +12,7 @@ namespace HairSalon.Tests
     {
       Stylist.DeleteAll();
       Client.DeleteAll();
+      Speciality.DeleteAll();
     }
     public StylistTests()
     {
@@ -116,6 +117,26 @@ namespace HairSalon.Tests
      List<Stylist> result = Stylist.GetAll();
      //Assert
      CollectionAssert.AreEqual(afterDeleteList, result);
+   }
+   public void GetSpecialitys_Test()
+   {
+     //Arrange
+     Stylist newStylist = new Stylist("Tom cruise", "expert");
+     newStylist.Save();
+     Speciality newSpeciality = new Speciality("layer");
+     newSpeciality.Save();
+     Speciality newSpeciality1 = new Speciality("color");
+     newSpeciality1.Save();
+
+     //Act
+     newStylist.AddSpeciality(newSpeciality);
+     newStylist.AddSpeciality(newSpeciality1);
+
+     List<Speciality> expectedResult = new List<Speciality>{newSpeciality, newSpeciality1};
+     List<Speciality> result = newStylist.GetSpecialities();
+
+     //Assert
+     CollectionAssert.AreEqual(expectedResult, result);
    }
   }
 }
