@@ -162,5 +162,20 @@ namespace HairSalon.Models
     conn.Dispose();
   }
   }
+  public void Delete()
+  {
+    MySqlConnection conn = DB.Connection();
+    conn.Open();
+    var cmd = conn.CreateCommand() as MySqlCommand;
+    cmd.CommandText = @"DELETE FROM clients WHERE id = @thisId;";
+
+    cmd.Parameters.Add(new MySqlParameter("@thisId", _id));
+
+    cmd.ExecuteNonQuery();
+    if (conn != null)
+    {
+      conn.Close();
+    }
+  }
 }
 }
