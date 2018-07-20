@@ -1,0 +1,19 @@
+<h1>List of Specialitys</h1>
+<table>
+  <tr>
+    <th>Speciality </th>
+    <th>Update</th>
+    <th>Delete</th>
+  </tr>
+  @foreach(var speciality in Model)
+  {
+    <tr>
+      <td><a href="/specialitys/@speciality.GetSpecialityId()">@speciality.GetSpecialityName()</a></td>
+      <td><a href="/specialitys/@speciality.GetSpecialityId()/update">Edit</a></td>
+      <td><a href="/specialitys/@speciality.GetSpecialityId()/delete">Delete</a></td>
+
+    </tr>
+  }
+</table>
+<p><a href="/specialitys/new">Add a New Speciality</a></p>
+<p><a href="/">Back to Home</a></p>
