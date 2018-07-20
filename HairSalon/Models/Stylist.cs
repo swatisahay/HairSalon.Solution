@@ -175,5 +175,24 @@ namespace HairSalon.Models
       return allClientDetails;
 
     }
+    public void Edit(string newStylist)
+  {
+    MySqlConnection conn = DB.Connection();
+    conn.Open();
+    var cmd = conn.CreateCommand() as MySqlCommand;
+    cmd.CommandText = @"UPDATE stylists SET stylist_name = @newStylistName WHERE id = @searchId;";
+
+    cmd.Parameters.Add(new MySqlParameter("@searchId", _id));
+    cmd.Parameters.Add(new MySqlParameter("@newStylistName", newStylist));
+
+    cmd.ExecuteNonQuery();
+    _stylistName = newStylist;
+
+    conn.Close();
+    if (conn != null)
+    {
+      conn.Dispose();
+    }
+  }
   }
 }
