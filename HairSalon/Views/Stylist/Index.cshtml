@@ -15,6 +15,7 @@
     <th>Stylist Level</th>
 
     <th>Clients</th>
+    <th>Specialities</th>
 
   </tr>
   @foreach(var stylist in Stylist.GetAll())
@@ -25,6 +26,7 @@
     <td>@stylist.GetStylistDetail()</td>
 
     <td> <a href="/stylist/@stylist.GetId()/clients">Client details</a> </td>
+    <td> <a href="/stylist/@stylist.GetId()/speciality">Check Out</a> </td>
     <td><a href="/stylist/@stylist.GetId()/update">Edit</a></td>
     <td><a href="/stylist/@stylist.GetId()/delete">Delete</a></td>
 
