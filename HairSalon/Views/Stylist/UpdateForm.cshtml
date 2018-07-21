@@ -1,0 +1,17 @@
+<h1>The Star Hair Salon</h1>
+<h2>Enter a new stylist</h2>
+<a href='/'>Back to Home<a/>
+<br>
+<a href='/stylist/find'>Find stylist by Id<a/>
+
+<br>
+<a href='/stylist/new'>Add a new stylist<a/>
+<br>
+<h3>Update a Stylist:</h3>
+<form action="/stylist/@Model.GetId()/update" method="post">
+  <label for="updatename">Stylist name:</label>
+  <input id="updatename" name="updatename" type="text" value = @Model.GetStylistName()>
+
+
+  <button type="submit">Add</button>
+</form>
