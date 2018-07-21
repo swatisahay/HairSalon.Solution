@@ -9,10 +9,10 @@
 
 <h2>Client List</h2>
 
-  <h3>@Model.GetName() Clients:</h3>
+  <h3>@Model.GetStylistName() Clients:</h3>
   <ul>
     @foreach(var client in Model.GetClients())
     {
-        <li>@client.GetStylistName()</li>
+        <li>@client.GetName()</li>
     }
   </ul>
