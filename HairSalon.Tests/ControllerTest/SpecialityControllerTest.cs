@@ -42,7 +42,7 @@ namespace HairSalon.Tests
       SpecialityController controller = new SpecialityController();
 
       //Act
-      ActionResult detailView = controller.Details(1);
+      ActionResult detailView = controller.Detail(1);
 
       //Assert
       Assert.IsInstanceOfType(detailView, typeof(ViewResult));
@@ -52,8 +52,8 @@ namespace HairSalon.Tests
     {
       //Arrange
       SpecialityController controller = new SpecialityController();
-      IActionResult actionResult = controller.Details(1);
-      ViewResult detailView = controller.Details(1) as ViewResult;
+      IActionResult actionResult = controller.Detail(1);
+      ViewResult detailView = controller.Detail(1) as ViewResult;
 
       //Act
       var result = detailView.ViewData.Model;

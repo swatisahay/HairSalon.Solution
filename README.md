@@ -20,6 +20,16 @@ A database that stores list of stylists and their clients for a hair salon.
 * Let user select a stylist, see their details, and see a list of all clients that belong to that stylist
 * Let user add new stylists
 * Let the user add new clients to a specific stylist. User should not be able to add a client if no stylist have been added.
+* Let user  delete stylists (all and single).
+* Let user  delete clients (all and single).
+* Let user  view clients (all and single).
+* Let user  edit JUST the name of a stylist. (You can choose to allow users to edit additional properties but it is not required.)
+* Let user  edit ALL of the information for a client.
+* Let user  add a specialty and view all specialties that have been added.
+* Let user  add a specialty to a stylist.
+* Let user  click on a specialty and see all of the stylists that have that specialty.
+* Let user I need to see the stylist's specialties on the stylist's details page.
+* Let user  add a stylist to a specialty.
 
 ## Technologies Used
 

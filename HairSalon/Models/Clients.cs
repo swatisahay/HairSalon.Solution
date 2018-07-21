@@ -148,14 +148,15 @@ namespace HairSalon.Models
   MySqlConnection conn = DB.Connection();
   conn.Open();
   var cmd = conn.CreateCommand() as MySqlCommand;
-  cmd.CommandText = @"UPDATE clients SET (client_name, stylist_id) VALUES (@clientName, @stylistId); WHERE id = @searchId;";
+  cmd.CommandText =  @"UPDATE clients SET client_name = @newClientName, stylist_id = @stylistId WHERE id = @searchId;";
 
   cmd.Parameters.Add(new MySqlParameter("@searchId", _id));
-  cmd.Parameters.Add(new MySqlParameter("@newClientName", newClient));
+  cmd.Parameters.Add(new MySqlParameter("@newClientName", _clientName));
   cmd.Parameters.Add(new MySqlParameter(" @stylistId", _stylistId));
 
   cmd.ExecuteNonQuery();
   _clientName = newClient;
+  _id = id;
 
   conn.Close();
   if (conn != null)
