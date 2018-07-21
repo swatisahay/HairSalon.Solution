@@ -37,7 +37,7 @@ namespace HairSalon.Controllers
     public ActionResult Update(int id)
     {
       Speciality thisSpeciality = Speciality.Find(id);
-      thisSpeciality.Edit(Request.Form["updateSpeciality"]);
+      thisSpeciality.Edit(Request.Form["updatespeciality"]);
       return RedirectToAction("Index");
     }
 

@@ -58,7 +58,7 @@ namespace HairSalon.Tests
 
     }
     [TestMethod]
-   public void Find_FindsClientbyIdInDatabase_Item()
+   public void Find_FindsClientbyIdInDatabase_Client()
    {
      //Arranges
      Client testClient = new Client("tom", 1);
@@ -77,8 +77,11 @@ namespace HairSalon.Tests
     Client newClient = new Client("George",2);
     newClient.Save();
     Client expectedClient = new Client("Martin",2, newClient.GetId());
+    
     //Act
-    newClient.Edit("Martin", 1);
+
+
+    newClient.Edit("Martin");
 
     //Assert
     Assert.AreEqual(expectedClient, newClient);

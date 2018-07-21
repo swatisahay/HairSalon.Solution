@@ -1,0 +1,10 @@
+<h1>Update Speciality</h1>
+<h2>Update a new Speciality</h2>
+<hr />
+<form action="/specialitys/@Model.GetSpecialityId()/update" method="post">
+  <label for="updatespeciality">Speciality:</label>
+  <input id="updatespeciality" name="updatespeciality" type="text" value=@Model.GetSpecialityName()>
+  <button type="submit">Add</button>
+</form>
+<h4><a href="/specialitys">List of Specialitys</a></h4>
+<h4><a href="/">Return home</a></h4>

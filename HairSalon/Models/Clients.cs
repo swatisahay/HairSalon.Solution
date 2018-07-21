@@ -143,20 +143,20 @@ namespace HairSalon.Models
      }
      return foundClient;
   }
-  public void Edit(string newClient, int id)
-{
+  public void Edit(string newClient, int newStylistId)
+  {
   MySqlConnection conn = DB.Connection();
   conn.Open();
   var cmd = conn.CreateCommand() as MySqlCommand;
   cmd.CommandText =  @"UPDATE clients SET client_name = @newClientName, stylist_id = @stylistId WHERE id = @searchId;";
 
   cmd.Parameters.Add(new MySqlParameter("@searchId", _id));
-  cmd.Parameters.Add(new MySqlParameter("@newClientName", _clientName));
-  cmd.Parameters.Add(new MySqlParameter(" @stylistId", _stylistId));
+  cmd.Parameters.Add(new MySqlParameter("@newClientName", newClient));
+  cmd.Parameters.Add(new MySqlParameter(" @stylistId", newStylistId));
 
   cmd.ExecuteNonQuery();
   _clientName = newClient;
-  _id = id;
+  // _id = newId;
 
   conn.Close();
   if (conn != null)
